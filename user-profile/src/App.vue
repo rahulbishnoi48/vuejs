@@ -1,29 +1,33 @@
 <template>
-  <div id="app">
-    
+  <div >
+    <show-header></show-header>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import profile from './components/profile.vue'
-import photos from './components/photos.vue'
-import posts from './components/posts.vue'
-
+// import profile from './components/profile.vue';
+// import photos from './components/photos.vue';
+// import posts from './components/posts.vue';
+import header from './components/header.vue';
 export default {
-  name: 'App',
   components: {
-   
+    'show-header':header,
+  },
+  data(){
+    return {
+
+    }
+  },
+  methods:{
+
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body{
+  margin:0;
+  font-family: 'Nunito SemiBold';
 }
 </style>

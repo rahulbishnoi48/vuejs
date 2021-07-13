@@ -20,7 +20,7 @@ export default {
   },methods:{
   },
   created(){
-      this.$http.get('https://jsonplaceholder.typicode.com/users/'+this.selectedUser.substring(1)).then(function(data){
+      this.$http.get('https://jsonplaceholder.typicode.com/users/'+this.selectedUser).then(function(data){
           return data.body;
       }).then(function(data){
           this.selectedUserData= data;

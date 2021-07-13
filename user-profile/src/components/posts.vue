@@ -25,7 +25,7 @@ export default {
       }).then(function(data){
           let postsArray=[];
           for(let key in data){
-            if(data[key].userId==this.userId.substring(1)){
+            if(data[key].userId==this.userId){
                 postsArray.push(data[key]);
             }
           }

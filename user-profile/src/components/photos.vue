@@ -1,6 +1,8 @@
 <template>
   <div id="photos">
-
+    <div v-for="(photo,index) in userPhotos" :key='index'>
+      <img :src="photo.url">
+    </div>
   </div>
 </template>
 
@@ -24,20 +26,28 @@ export default {
           return data.body;
       }).then(function(data){
           this.photos= data;
-          console.log(this.photos);
       }),
       this.$http.get('https://jsonplaceholder.typicode.com/albums').then(function(data){
         return data.body;
       }).then(function(data){
         let albums=[];
         for(let album in data){
-          if(this.userId.substring(1)==data[album].userId){
+          if(this.userId==data[album].userId){
             albums.push(data[album]);
           }
         }
         this.userAlbums=albums;
-        this.userAlbums
-        
+        return albums;
+      }).then(function(albums){
+        let photos=[];
+        for(let album in albums){
+          for(let photo in this.photos){
+            if(albums[album].id== this.photos[photo].albumId){
+              photos.push(this.photos[photo]);
+            }
+          }
+        }
+        this.userPhotos=photos;
       })
   }
 }

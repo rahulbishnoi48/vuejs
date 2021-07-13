@@ -2,9 +2,9 @@
     <div>
         <nav>
             <ul>
-                <li><router-link :to="`/:${selectedUser}`" exact>profile</router-link></li>
-                <li><router-link :to="`/posts/:${selectedUser}`" exact>posts</router-link></li>
-                <li><router-link :to="`photos/:${selectedUser}`" exact>photos</router-link></li>
+                <li><router-link :to="`/${selectedUser}`" exact>profile</router-link></li>
+                <li><router-link :to="`/posts/${selectedUser}`" exact>posts</router-link></li>
+                <li><router-link :to="`photos/${selectedUser}`" exact>photos</router-link></li>
             </ul>
         </nav>
             <label>Select a user</label>    

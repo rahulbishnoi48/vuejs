@@ -5,7 +5,7 @@ import singlePost from './components/singlePosts.vue';
 
 export default[
     {
-        path: '/:profileid',component:profile
+        path: '/',component:profile
     },
     {
         path: '/posts', component : posts

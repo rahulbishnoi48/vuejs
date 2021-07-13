@@ -1,28 +1,55 @@
 <template>
   <div id="profile">
-    <ul>
-      <li v-for="(value , property ,index) in details" :key="index">
-          {{index}}. {{property}} : {{value}}
-      </li>
-    </ul>
+    <label>Select a user</label>
+    <div v-if="!search" >
+      <select v-model="selectedUser">
+        <option v-for="user in users" :key="user.id" >{{user.id}}</option>
+      </select>
+      <button v-on:click.prevent="searching">Search profile</button>
+    </div>
+   
+    <div v-if="search" id="profile-preview">
+      <h3>Profile Preview</h3>
+      <p v-for="(value,property,index) in selectedUserData" :key="index">{{property}} : {{value}}</p>
+      <button v-on:click="searchProfile">Search another Profile</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  props:["users"]
   data(){
     return{
-      profileId:this.$route.params.profileid,
-      details:{
+      users:{
+      },
+      search:false,
+      selectedUser:'',
+      selectedUserData:{
+
       }
+    }
+  },methods:{
+    searching:function(){
+      for(let user in this.users){
+        
+        if(user==this.selectedUser-1){
+          
+          this.selectedUserData=this.users[user];
+          this.search=true;
+        }
+      }
+    },
+    searchProfile:function(){
+      this.search=false;
     }
   },
   created(){
-      this.$http.get('https://jsonplaceholder.typicode.com/users/'+this.profileId).then(function(data){
+      this.$http.get('https://jsonplaceholder.typicode.com/users').then(function(data){
           return data.json();
       }).then(function(data){
-          this.details= data;
-      })
+          this.users= data;
+      });
   }
 }
 </script>

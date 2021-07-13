@@ -5,15 +5,15 @@ import singlePost from './components/singlePosts.vue';
 
 export default[
     {
-        path: '/',component:profile
+        path: '/:id',component:profile
     },
     {
-        path: '/posts', component : posts
+        path: '/posts/:id', component : posts
     },
     {
-        path : '/posts/:id',component : singlePost
+        path : '/posts/single/:postid',component : singlePost
     },
     {
-        path : '/photos' , component: photos
+        path : '/photos/:id' , component: photos
     }
 ]

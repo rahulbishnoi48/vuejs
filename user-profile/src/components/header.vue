@@ -1,17 +1,44 @@
 <template>
-    <nav>
-        <ul>
-            <li><router-link to="/" exact>profile</router-link></li>
-            <li><router-link to='/posts' exact>posts</router-link></li>
-            <li><router-link to="/photos" exact>photos</router-link></li>
-        </ul>
-    </nav>
+    <div>
+        <nav>
+            <ul>
+                <li><router-link :to="`/:${selectedUser}`" exact>profile</router-link></li>
+                <li><router-link :to="`/posts/:${selectedUser}`" exact>posts</router-link></li>
+                <li><router-link :to="`photos/:${selectedUser}`" exact>photos</router-link></li>
+            </ul>
+        </nav>
+            <label>Select a user</label>    
+            <select v-model="selectedUser">
+                <option v-for="user in users" :key="user.id" >{{user.id}}</option>
+            </select>
+            <button v-on:click.prevent="updateLink">Search profile</button>
+    </div>
 </template>
 
 <script>
     export default{
-        
-    }
+        data(){
+            return{
+                users:{
+                },
+                selectedUser:'',
+            }
+        },
+        methods:{
+            updateLink:function(){
+                this.profileLink+=String(this.selectedUser);
+                this.postsLink+=String(this.selectedUser);
+                this.photosLink=String(this.photos);
+            }
+        },
+        created(){
+            this.$http.get('https://jsonplaceholder.typicode.com/users').then(function(data){
+                return data.json();
+            }).then(function(data){
+                this.users= data;
+            });
+        }
+}
 </script>
 
 <style>

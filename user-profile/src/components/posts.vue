@@ -1,7 +1,7 @@
 <template>
   <div id="posts">
     <h1>All Posts</h1>
-    <div v-for="post in posts" :key='post'  >
+    <div v-for="(post,index) in userPosts" :key='index'  >
         <h2>{{post.title}}</h2>
         <article>{{post.body}}</article>
     </div>
@@ -12,7 +12,8 @@
 export default {
   data(){
       return {
-          posts:[],
+          userId: this.$route.params.id,
+          userPosts:[],
       }
   },
   methods:{
@@ -20,17 +21,15 @@ export default {
   },
   created(){
       this.$http.get("https://jsonplaceholder.typicode.com/posts").then(function(data){
-          // console.log(data);
           return data.body;
-
       }).then(function(data){
           let postsArray=[];
           for(let key in data){
-              data[key].id=key;
-              postsArray.push(data[key]);
+            if(data[key].userId==this.userId.substring(1)){
+                postsArray.push(data[key]);
+            }
           }
-          this.posts=postsArray;
-          console.log(postsArray);
+          this.userPosts=postsArray;
       })
   }
 }

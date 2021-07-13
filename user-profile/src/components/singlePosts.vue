@@ -20,7 +20,8 @@ export default {
       this.$http.get('https://jsonplaceholder.typicode.com/posts/'+this.id).then(function(data){
           return data.json();
       }).then(function(data){
-          console.log(data);
+        
+          this.post=data;
       })
   }
 }

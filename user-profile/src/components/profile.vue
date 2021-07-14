@@ -23,9 +23,27 @@ export default {
       this.$http.get('https://jsonplaceholder.typicode.com/users/'+this.selectedUser).then(function(data){
           return data.body;
       }).then(function(data){
-          this.selectedUserData= data;
+        let userData={};
+        for(const key in data){
+          if(key==='address'){
+            const addressObj=data[key];
+            let addressStr='';
+            for(const fields in addressObj){
+              if(fields!=='geo'){
+                addressStr+=`${fields} - ${addressObj[fields]}, `;
+              }
+            }
+            userData['address']=addressStr;
+          }else if(key==='company'){
+            const companyName=data[key].name;
+            userData['company']=companyName;
+          }else{
+            userData[key]=data[key];
+          }
+        }
+        this.selectedUserData=userData;
       });
-  }
+  },
 }
 </script>
 

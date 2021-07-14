@@ -1,8 +1,8 @@
 <template>
   <div id="posts">
     <h1>All Posts</h1>
-    <div v-for="(post,index) in userPosts" :key='index'  >
-        <h2>{{post.title}}</h2>
+    <div v-for="(post,index) in userPosts" class="single-post" :key='index'  >
+        <router-link v-bind:to="`/posts/single/${post.id}`"><h2>{{post.title}}</h2></router-link>
         <article>{{post.body}}</article>
     </div>
   </div>
@@ -23,19 +23,25 @@ export default {
       this.$http.get("https://jsonplaceholder.typicode.com/posts").then(function(data){
           return data.body;
       }).then(function(data){
-          let postsArray=[];
-          for(let key in data){
+          const postsArray=[];
+          for(const key in data){
             if(data[key].userId==this.userId){
                 postsArray.push(data[key]);
             }
           }
           this.userPosts=postsArray;
+          console.log(this.userPosts);
       })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style >
+.single-blog{
+    padding:20px;
+    margin: 20px 0;
+    box-sizing : border-box;
+    background: #eee
+}
 </style>

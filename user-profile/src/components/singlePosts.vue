@@ -1,7 +1,7 @@
 <template>
   <div id="single-post">
     <h1>{{post.title}}</h1>
-    <article>{{post.content}}</article>
+    <article>{{post.body}}</article>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   data(){
       return{
-          id:this.$route.params.id,
+          id:this.$route.params.postid,
           post:{
           }
       }
@@ -20,7 +20,6 @@ export default {
       this.$http.get('https://jsonplaceholder.typicode.com/posts/'+this.id).then(function(data){
           return data.json();
       }).then(function(data){
-        
           this.post=data;
       })
   }

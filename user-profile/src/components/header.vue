@@ -2,7 +2,7 @@
     <div>
         <nav>
             <ul>
-                <li><router-link :to="`/${selectedUser}`" exact>profile</router-link></li>
+                <li><router-link :to="`/${selectedUser}`" exact>profile</router-link></li> 
                 <li><router-link :to="`/posts/${selectedUser}`" exact>posts</router-link></li>
                 <li><router-link :to="`/photos/${selectedUser}`" exact>photos</router-link></li>
             </ul>
@@ -11,7 +11,6 @@
             <select v-model="selectedUser">
                 <option v-for="user in users" :key="user.id" >{{user.id}}</option>
             </select>
-            <button v-on:click.prevent="updateLink">Search profile</button>
     </div>
 </template>
 
@@ -25,11 +24,6 @@
             }
         },
         methods:{
-            updateLink:function(){
-                this.profileLink+=String(this.selectedUser);
-                this.postsLink+=String(this.selectedUser);
-                this.photosLink=String(this.photos);
-            }
         },
         created(){
             this.$http.get('https://jsonplaceholder.typicode.com/users').then(function(data){

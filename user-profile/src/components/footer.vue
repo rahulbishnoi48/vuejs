@@ -2,10 +2,20 @@
     <div>
         <nav>
             <ul>
-                <li>About us</li>
-                <li>Help</li>
-                <li>Contact us</li>
+                <li><button v-on:click="aboutEvent">About us</button></li>
+                <li><button v-on:click="helpEvent">Help</button></li>
+                <li><button v-on:click="contactEvent">Contact Us</button></li>
             </ul>
+            <div v-if="about">
+                <p> It is an app for user profile details </p>
+            </div>
+            <div v-if="help">
+                <p>Here profile is for user's profile and posts is to see the posts of user and photos is to see the user's photos </p>
+            </div>
+            <div v-if="contactUs">
+                <p> you can contact us at someone@email.com </p>
+            </div>
+
         </nav>
     </div>
 </template>
@@ -14,8 +24,22 @@
     export default{
         data(){
             return{
+                about:false,
+                contactUs:false,
+                help:false
             }
         },
+        methods:{
+            aboutEvent:function(){
+                this.about= !this.about;
+            },
+            contactEvent:function(){
+                this.contactUs= !this.contactUs;
+            },
+            helpEvent:function(){
+                this.help = !this.help;
+            }
+        }
 }
 </script>
 

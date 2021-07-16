@@ -1,8 +1,8 @@
 <template>
   <div id="posts">
     <h1>All Posts</h1>
-    <div v-for="(post,index) in userPosts" class="single-post" :key='index'  >
-        <router-link v-bind:to="`/posts/single/${post.id}`"><h2>{{post.title}}</h2></router-link>
+    <div v-for="(post,index) in userPosts"  :key='index' class="single-post" >
+        <router-link :to="`/posts/single/${post.id}`" exact ><h2>{{post.title}}</h2></router-link>
         <article>{{post.body}}</article>
     </div>
   </div>
@@ -43,5 +43,9 @@ export default {
     margin: 20px 0;
     box-sizing : border-box;
     background: #eee
+}
+
+h2{
+  color: black;
 }
 </style>

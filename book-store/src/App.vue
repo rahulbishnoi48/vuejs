@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <show-header></show-header>
     <router-view></router-view>
     <show-footer></show-footer>
@@ -8,17 +8,18 @@
 
 <script>
 
-
 import header from './components/header.vue';
 import footer from './components/footer.vue';
 
+
+
 export default {
-  components: {
-    'show-header':header,
-    'show-footer':footer,
+  components:{
+    'show-header' : header,
+    'show-footer' : footer,
   },
-  data(){
-    return {
+  data () {
+    return{
 
     }
   },
@@ -28,9 +29,9 @@ export default {
 }
 </script>
 
-<style>
+<style >
 body{
-  margin:0;
+  margin: 0;
   font-family: 'Nunito SemiBold';
 }
 </style>

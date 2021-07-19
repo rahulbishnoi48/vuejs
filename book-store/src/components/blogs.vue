@@ -1,5 +1,9 @@
 <template>
     <div id="blogs">
+        <label >search based on :</label>
+        <select v-model="searchField">
+            <option v-for="(field,index) in searchCriteria" :key="index">{{field}}</option>
+        </select>
         <input type="text" v-model="search" placeholder="search for blog"/>
         <div v-for="(blog,index) in filterBlogs" class="single-blog" :key="index">
             <router-link v-bind:to="'/blog/'+blog.id"><h2>{{blog.title}}</h2></router-link>
@@ -15,6 +19,8 @@ export default{
         return{
             blogs:[],
             search:'',
+            searchField:'',
+            searchCriteria:["author","title","genre"]
         }
     },
     methods:{

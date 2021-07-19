@@ -1,15 +1,30 @@
 export default{
     computed:{
-        filterBooks: function(){
-            return this.books.filter((entry)=>{
-                return entry.title.match(this.search);
-            })
+        filterBooks: function(data){
+            let searchField = data.searchField
+            if(searchField===''){
+                return data.books.filter((entry)=>{
+                    return entry.title.match(this.search);
+                })
+            }else{
+                return data.books.filter((entry)=>{
+                    return entry[searchField].match(this.search);
+                })
+            }
+            
         },
         filterBlogs: function(data){
-            console.log(data);
-            return data.blogs.filter((entry)=> {
-                return entry.title.match(this.search);
-            })
+
+            let searchField = data.searchField
+            if(searchField===''){
+                return data.blogs.filter((entry)=>{
+                    return entry.title.match(this.search);
+                })
+            }else{
+                return data.blogs.filter((entry)=>{
+                    return entry[searchField].match(this.search);
+                })
+            }
         }
     }
 }

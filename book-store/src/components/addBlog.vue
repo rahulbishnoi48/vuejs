@@ -16,7 +16,7 @@
     <div v-if="submitted">
       <p>Thanks for adding a blog</p>
       <p>below is the preview of the blog you added </p>
-      <button v-on:click.prevent="addNew">Add another blog</button>
+      <button v-on:click="addNew">Add another blog</button>
     </div>
     <div id="preview">
         <h3>Preview blog</h3>

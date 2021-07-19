@@ -5,8 +5,9 @@ export default{
                 return entry.title.match(this.search);
             })
         },
-        filterBlogs: function(){
-            return this.blogs.filter((entry)=> {
+        filterBlogs: function(data){
+            console.log(data);
+            return data.blogs.filter((entry)=> {
                 return entry.title.match(this.search);
             })
         }

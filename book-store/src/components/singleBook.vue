@@ -1,7 +1,7 @@
 <template>
   <div id="single-blog">
     <h2>{{book.title}}</h2>
-    <article>{{book.content}}</article>
+    <article>{{book.description}}</article>
     <p>Author: {{book.author}}</p>
     <p>Genre: {{book.genre}}</p>
   </div>

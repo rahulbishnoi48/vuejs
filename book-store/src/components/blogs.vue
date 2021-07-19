@@ -9,6 +9,7 @@
 </template>
 <script>
 import searchContent from '../mixins/searchContent.js'
+import arrayForm from '../shared/componentFunctions.js'
 export default{
     data(){
         return{
@@ -23,12 +24,7 @@ export default{
         this.$http.get("https://bookblogs-a9a81-default-rtdb.asia-southeast1.firebasedatabase.app/blogs.json").then(function(data){
             return data.json();
         }).then(function(data){
-            let blogsArray=[];
-            for(let key in data){
-                data[key].id=key;
-                blogsArray.push(data[key]);
-            }
-            this.blogs=blogsArray;
+            this.blogs=arrayForm(data);
         })
     },
     mixins:[searchContent]

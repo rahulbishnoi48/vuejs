@@ -12,7 +12,8 @@
           <div id="surroundings">{{current.weather[0].main}}</div>
         </div>
       </div>
-
+      <br>
+      <br>
       <p>Search for any other lcoation temperature</p>
 
       <div id= "searchbox">
@@ -41,6 +42,9 @@ export default {
       query: '',
       weather :{},
       current:{},
+      countries:'',
+      states:'',
+      cities:'',
     }
   },
   methods:{
@@ -60,8 +64,6 @@ export default {
       return `${d}`;
     },
     currentButton(){
-      // let longitude;
-      // let latitude;
       if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(async(position)=>{
           // latitude=await position.coords.latitude;

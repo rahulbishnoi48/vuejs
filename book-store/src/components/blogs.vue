@@ -1,10 +1,12 @@
 <template>
     <div id="blogs">
-        <label >search based on :</label>
-        <select v-model="searchField">
-            <option v-for="(field,index) in searchCriteria" :key="index">{{field}}</option>
-        </select>
-        <input type="text" v-model="search" placeholder="search for blog"/>
+        <search-block @searchFieldChanged="searchField = $event"  @searchContentChanged="search = $event"></search-block>
+        <router-link v-bind:to="`/books`"><button >search Books</button></router-link>
+        <br>
+        <br>
+        <label>If you want to add a new blog please click here:</label><router-link v-bind:to="`/addblog`"><button >Add a blog</button></router-link>
+        <br>
+        <br>
         <div v-for="(blog,index) in filterBlogs" class="single-blog" :key="index">
             <router-link v-bind:to="'/blog/'+blog.id"><h2>{{blog.title}}</h2></router-link>
             <article>{{blog.content}}</article>
@@ -14,6 +16,7 @@
 <script>
 import searchContent from '../mixins/searchContent.js'
 import arrayForm from '../shared/componentFunctions.js'
+import search from './search.vue';
 export default{
     data(){
         return{
@@ -22,6 +25,9 @@ export default{
             searchField:'',
             searchCriteria:["author","title","genre"]
         }
+    },
+    components:{
+        'search-block':search
     },
     methods:{
 

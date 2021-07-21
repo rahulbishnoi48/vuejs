@@ -11,8 +11,6 @@
 import header from './components/header.vue';
 import footer from './components/footer.vue';
 
-
-
 export default {
   components:{
     'show-header' : header,

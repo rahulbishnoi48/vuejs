@@ -5,7 +5,7 @@
         <p>We enjoy to read your blogs and reviews about different books</p>
         <p>You can write to us by use using below button and we'll get back to :</p>
         <button v-on:click="formDisplay">Write to us</button>
-        <div v-if="submitted">
+        <div v-if="!submitted">
             <label>name:</label>
             <input type="text" v-model.lazy="writer.name" placeholder="Your full name" required />
             <label>Email:</label>
@@ -25,18 +25,18 @@ export default{
                 email:'',
                 comment:'',
             },
-            submitted:false,
+            submitted:true,
         }
     },
     methods:{
         postComment:function(){
             this.$http.post("https://bookblogs-a9a81-default-rtdb.asia-southeast1.firebasedatabase.app/queries.json",this.writer).then(function(data){
                 console.log(data);
-                this.submitted=false;
+                this.submitted=!this.submitted;
             })
         },
         formDisplay:function(){
-            this.submitted=true;
+            this.submitted=!this.submitted;
         }
     },
 

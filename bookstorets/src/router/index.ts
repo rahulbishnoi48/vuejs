@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/home.vue'
-import books from '../views/books.vue'
+import books from '../components/books.vue'
 import blogs from '../views/blogs.vue'
 import terms from  '../views/terms.vue'
-import singleBlog from '../views/single-blog.vue'
+import singleBlog from '../components/single-blog.vue'
 
-import singleBook from '../views/single-book.vue'
+import singleBook from '../components/single-book.vue'
 
-import addBook from '../views/add-book.vue'
-import addBlog from '../views/add-blog.vue'
+import addBook from '../components/add-book.vue'
+import addBlog from '../components/add-blog.vue'
 
 Vue.use(VueRouter)
 

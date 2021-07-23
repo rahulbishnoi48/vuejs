@@ -1,12 +1,10 @@
-// import { Books } from "@/interface/book-blogs";
+import { Books } from "@/interface/book-blogs";
 
 
-// export const arrayForm =(data )=>{
-//     let newArr=[];
-
-//     for (let key in data){
-//         data[key].id=key;
-//         newArr.push(data[key]);
-//     }
-//     return newArr;
-// }
+export const arrayForm =(data:Record<string, any> ):Books=>{
+    const newArr=[];
+    for (const [key, value] of Object.entries(data)) {
+            newArr.push(data[key]);
+    }
+    return newArr;
+}

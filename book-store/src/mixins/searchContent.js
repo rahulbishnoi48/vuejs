@@ -8,7 +8,7 @@ export default{
                 })
             }else{
                 return data.books.filter((entry)=>{
-                    return entry[searchField].match(this.search);
+                    return entry.searchField.match(this.search);
                 })
             }
             

@@ -6,6 +6,7 @@
         </ul>
     </nav>
 </template>
+
 <style>
     ul{
     list-style-type: none;

@@ -62,9 +62,6 @@ Copyright: It is our policy to respond to clear notices of alleged copyright inf
 </article>
     </div>
 </template>
-<script>
-export default{
-}
-</script>
+
 <style>
 </style>

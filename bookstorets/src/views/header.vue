@@ -1,24 +1,16 @@
 <template>
     <nav>
         <ul>
-            <li><router-link to="/about" exact>About Us</router-link></li>
-            <li><router-link to="/terms" exact>Terms and Conditions</router-link></li>
+            <li><router-link to="/" exact>Home</router-link></li>
+            <li><router-link to="/books" exact>Books</router-link></li>
+            <li><router-link to="/blogs" exact>Blogs</router-link></li>
         </ul>
     </nav>
 </template>
-
-<script>
-export default{
-    data (){
-        return{}
-    }
-}
-</script>
-
-<style>
-    ul{
+<style scoped>
+ul{
     list-style-type: none;
-    text-align: left;
+    text-align: center;
     margin: 0;
 }
 li{

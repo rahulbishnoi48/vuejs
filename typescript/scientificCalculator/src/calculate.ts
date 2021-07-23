@@ -4,6 +4,31 @@ type calcObj= {
     }
 }
 
+type eventObj={
+    target:{
+        value:string
+    }
+};
+
+let input:string='';
+
+const form =document.querySelector('#calc') as HTMLFormElement;
+const displayInput =document.querySelector('.display') as HTMLInputElement;
+
+const operationButton = document.querySelectorAll('#btn');
+console.log(operationButton);
+
+// operationButton.forEach((element)=>{
+//     console.log(element.value);  
+//     element.addEventListener('click',()=>{
+//         if(element.nodeValue=='C'){
+//             console.log('1');
+//             input='';
+//             console.log('rahul');
+//         }
+//     })
+// });
+
 
 const clear=(calc:calcObj):void=>{
     

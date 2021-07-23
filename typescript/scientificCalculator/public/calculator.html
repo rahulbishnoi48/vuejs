@@ -5,19 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scientific Calculator</title>
-    <script src="../src/calculate.js"></script>
 </head>
 <body>
     <div class = title >
         Scientific Calculator
     </div>
      
-    <form name = "calc">
+    <form name = "calc" id="calc">
          
     <table id = "calc" border = 2>
          
     <tr>
-        <td colspan=5><input id="btn" name="display"
+        <td colspan=5><input id="btn" class="display" name="display"
             onkeypress="return event.charCode >= 48
             && event.charCode <= 57" type="text">
         </td>
@@ -178,5 +177,7 @@
     </tr>
     </table>
     </form>
+    <script src="./calculate.js"></script>
+
 </body>
 </html>

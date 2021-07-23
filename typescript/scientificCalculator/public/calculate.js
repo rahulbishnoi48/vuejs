@@ -1,4 +1,19 @@
 "use strict";
+var input = '';
+var form = document.querySelector('#calc');
+var displayInput = document.querySelector('.display');
+var operationButton = document.querySelectorAll('#btn');
+console.log(operationButton);
+// operationButton.forEach((element)=>{
+//     console.log(element.value);  
+//     element.addEventListener('click',()=>{
+//         if(element.nodeValue=='C'){
+//             console.log('1');
+//             input='';
+//             console.log('rahul');
+//         }
+//     })
+// });
 var clear = function (calc) {
     var size = calc.display.value.length;
     calc.display.value = calc.display.value.substring(0, size - 1);

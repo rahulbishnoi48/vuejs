@@ -33,8 +33,9 @@
 </template>
 
 <script lang='ts'>
+import Vue from 'vue'
 import {Book} from '@/interface/book-blogs'
-export default {
+export default Vue.extend({
   data (){
       return{
         book:{} as Book,
@@ -50,7 +51,7 @@ export default {
           this.submitted=false;
       }
   }
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

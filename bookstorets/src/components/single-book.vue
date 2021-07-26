@@ -6,10 +6,10 @@
         <p>Genre: {{book.genre}}</p>
     </div>
 </template>
-<script>
+<script lang="ts">
 import {getSingleBook} from '@/service/getRequests'
-
-export default{
+import Vue from 'vue'
+export default Vue.extend({
     data(){
         return {
             id:this.$route.params.id,
@@ -27,7 +27,7 @@ export default{
     created(){
         this.getBlogData();
     }
-}
+})
 </script>
 <style>
 </style>

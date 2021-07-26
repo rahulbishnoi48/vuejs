@@ -17,7 +17,7 @@
       <p>Search for any other lcoation temperature</p>
 
       <div id= "searchbox">
-        <input type="text" class="location" placeholder="search" v-model="query"  v-on:keypress="fetchWeather"/>
+        <input type="text" class="location" placeholder="search" v-model="query"  v-on:keypress="weatherUpdate"/>
       </div>
       <div class="weather-data" v-if="typeof weather.main != 'undefined'" >
         <div id="location-data">
@@ -33,7 +33,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
-
+import {keyObj} from '@/interface/objTypes';
+import {fetchWeather} from '@/service/getCurrentWeather'
 export default Vue.extend({
   name: 'HelloWorld',
   props: {
@@ -49,10 +50,22 @@ export default Vue.extend({
       countries:'',
       states:'',
       cities:'',
+      keyPressed:''
     }
   },
   methods:{
-    
+    async getWeatherDetails(){
+      this.weather= await fetchWeather(this.keyPressed,)
+    },
+    weatherUpdate(e:keyObj){
+      this.keyPressed=e.key;
+    },
+    dateBuilder():string{
+      const d = new Date();
+      return `${d}`;
+    },
+    currentButton(){
+    }
   }
 });
 </script>

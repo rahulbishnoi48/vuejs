@@ -23,7 +23,6 @@ import {arrayForm} from '@/utils/arrayFormation';
 import {filterBooks} from '@/utils/searchContent';
 
 export default Vue.extend({
-  name: 'Home',
   components: {
     'search-area':search
   },

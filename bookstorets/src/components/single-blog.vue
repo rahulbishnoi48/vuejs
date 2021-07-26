@@ -6,10 +6,10 @@
         <p>Genre: {{blog.genre}}</p>
     </div>
 </template>
-<script>
-import {Book} from '@/interface/book-blogs'
+<script lang="ts">
+import Vue from 'vue'
 import {getSingleBlog} from '@/service/getRequests'
-export default{
+export default Vue.extend({
     data(){
         return {
             id:this.$route.params.id,
@@ -26,7 +26,7 @@ export default{
     created(){
         this.getBlogData();
     }
-}
+})
 </script>
 <style>
 </style>

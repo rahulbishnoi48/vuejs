@@ -18,8 +18,8 @@ export default{
         }
     },
     methods:{
-        getBlogData(){
-            this.blog = getSingleBlog(this.id);
+        async getBlogData(){
+            this.blog = await getSingleBlog(this.id);
             console.log(this.blog);
         }
     },

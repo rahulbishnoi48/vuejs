@@ -19,8 +19,8 @@ export default{
         }
     },
     methods:{
-        getBlogData(){
-            this.book = getSingleBook(this.id);
+        async getBlogData(){
+            this.book = await getSingleBook(this.id);
             // console.log(this.book);
         }
     },

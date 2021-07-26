@@ -27,7 +27,7 @@
         <p>Blog genre: </p>
         <p>{{blog.genre}}</p>
         <p>Blog content:</p>
-        <p>{{blog.description}}</p>
+        <p>{{blog.content}}</p>
     </div>
   </div>
 </template>

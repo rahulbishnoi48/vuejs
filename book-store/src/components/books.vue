@@ -37,7 +37,6 @@ export default{
         this.$http.get("https://bookblogs-a9a81-default-rtdb.asia-southeast1.firebasedatabase.app/books.json").then(function(data){
             return data.json();
         }).then(function(data){
-            console.log(data);
             this.books=arrayForm(data);
         })
     },

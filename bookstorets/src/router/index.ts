@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
 import Home from '../views/home.vue'
 import books from '../components/books.vue'
-import blogs from '../views/blogs.vue'
+import blogs from '../components/blogs.vue'
 import terms from  '../views/terms.vue'
 import singleBlog from '../components/single-blog.vue'
 

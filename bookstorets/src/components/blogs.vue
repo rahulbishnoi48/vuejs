@@ -1,15 +1,15 @@
 <template>
- <div id="books">
+ <div id="blogs">
             <search-area @searchFieldChanged="changeField($event)"  @searchContentChanged="changeSearchContent($event)"></search-area>
             <router-link v-bind:to="`/blogs`"><button >search blogs</button></router-link>
             <br>
             <br>
-            <label>If you want to add a book please click here:</label><router-link v-bind:to="`/addbook`"><button >Add a book</button></router-link>
+            <label>If you want to add a blog please click here:</label><router-link v-bind:to="`/addblog`"><button >Add a blog</button></router-link>
             <br>
             <br>
-            <div v-for="(book,index) in filteredBooks" class="single-book" :key="index">
-                <router-link v-bind:to="'/book/'+book.id"><h2>{{book.title}}</h2></router-link>
-                <article>{{book.description}}</article>
+            <div v-for="(blog,index) in filteredBlogs" class="single-blog" :key="index">
+                <router-link v-bind:to="'/blog/'+blog.id"><h2>{{blog.title}}</h2></router-link>
+                <article>{{blog.content}}</article>
             </div>
     </div>
 </template>
@@ -18,7 +18,7 @@
 import Vue from 'vue';
 import { Books } from '@/interface/book-blogs';
 import search from '@/components/search.vue';
-import {getBooks} from '@/service/getRequests';
+import {getBlogs} from '@/service/getRequests';
 import {arrayForm} from '@/utils/arrayFormation';
 import {filterBooks} from '@/utils/searchContent';
 
@@ -29,19 +29,17 @@ export default Vue.extend({
   },
   data(){
     return {
-    books: [] as Books,
-    searchCriteria:['author',"title","genre"],
-    searchField :'',
+    blogs: [] as Books,
+    searchCriteria:['author',"title","genre"] as string[],
+    searchField :'' as string,
     search:'',
     change:'',
     }
   },
   methods:{
-    async getAllBooks(){
-      let rawData=await getBooks();
-      this.books = arrayForm(rawData);
-      console.log(this.books);
-
+    async getAllBlogs(){
+      let rawData=await getBlogs();
+      this.blogs = arrayForm(rawData);
     },
     changeField(event:string){
       this.searchField=event;
@@ -53,9 +51,9 @@ export default Vue.extend({
       const data={
         searchField:this.searchField,
         search:this.search,
-        books:this.books,
+        books:this.blogs,
       };
-      console.log(data);
+      console.log(this.blogs)
       return filterBooks(data);
     }
     // filter():Books|string{
@@ -70,7 +68,7 @@ export default Vue.extend({
     // }
   },
   created(){
-    this.getAllBooks();
+    this.getAllBlogs();
     // this.filteredBooks=this.filter();
 
   },
@@ -84,7 +82,7 @@ export default Vue.extend({
   //   this.filterationOnSearch();
   // },
   computed:{
-    filteredBooks():Books{
+    filteredBlogs():Books{
       return this.filterationOnSearch();
     }
   }

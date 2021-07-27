@@ -1,59 +1,37 @@
-type calcObj= {
-    display:{
-        value:string
-    }
-}
-
-type eventObj={
-    target:{
-        value:string
-    }
-};
-
-let input:string='';
+import { calculator, clear } from "./utils/calcFunctions";
 
 const form =document.querySelector('#calc') as HTMLFormElement;
-const displayInput =document.querySelector('.display') as HTMLInputElement;
+const operationButton: Array<HTMLInputElement> = Array.prototype.slice.call(document.querySelectorAll('#btn'));
 
-const operationButton = document.querySelectorAll('#btn');
-console.log(operationButton);
-
-// operationButton.forEach((element)=>{
-//     console.log(element.value);  
-//     element.addEventListener('click',()=>{
-//         if(element.nodeValue=='C'){
-//             console.log('1');
-//             input='';
-//             console.log('rahul');
-//         }
-//     })
-// });
-
-
-const clear=(calc:calcObj):void=>{
+operationButton.forEach((element)=>{
     
-    let size:number = calc.display.value.length;
-    calc.display.value = calc.display.value.substring(0,size-1);
-}
-
-const calculator =(calc:calcObj):void=>{
-    let size:number;
-    let n:number;
-
-    if(calc.display.value.includes("!")){
-        size = calc.display.value.length;
-        n = Number(calc.display.value.substring(0,size-1));
-        let f:number=1;
-        let i:number;
-        for(i=2;i<=n;i++){
-            f=f*i;
+    element.addEventListener('click',()=>{
+        if(element.value==='<-'){
+            clear(form);
+        } else if(element.value === 'sin' || element.value ==='cos' || element.value==='tan' || element.value==='sqrt' ||
+         element.value ==='log' || element.value ==='exp'  ){
+             form.display.value+=`Math.${element.value}(`;
+        } else if(element.value==='='){
+            calculator(form);
+        } else if(element.value==='n!'){
+            form.display.value+='!';
+        } else if(element.value==='^'){
+            form.display.value+='Math.pow('
+        } else if(element.value==='l2e'){
+            form.display.value+='Math.LOG2E'
+        } else if(element.value==='l10e'){
+            form.display.value+='Math.log10'
+        } else if(element.value ==='E' || element.value==='PI' || element.value==='LN2'){
+            form.display.value+=`Math.${element.value}`
+        } else if(element.value==='C'){
+            form.display.value='';
         }
-        calc.display.value=String(f);
-    }else if(calc.display.value.includes("%")){
-        size = calc.display.value.length;
-        n= Number(calc.display.value.substring(0,size-1));
-        calc.display.value=String(n/100);
-    }else{
-        calc.display.value = eval(calc.display.value);
-    }
-}
+        
+        else {
+            form.display.value+=element.value;
+        }
+    })
+});
+
+
+
